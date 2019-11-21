@@ -18,13 +18,18 @@ class MessageApp {
     }
 
     update(id, update) {
-        this.messages[id].content = update
-        return this.messages[id]
+        this.messages.forEach(function (message) {
+            if (message.id == id) {
+                message.content = update
+            }
+        })
+        return this.messages
     }
 
     delete(id) {
-        this.messages.splice(id - 1, 1)
+        this.messages = this.messages.filter(message => message.id != id)
         return this.messages
     }
-}
+};
+
 export default MessageApp

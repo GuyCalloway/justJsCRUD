@@ -24,7 +24,7 @@ describe("app", function () {
         expect(testApp.get(0).content).to.equal("hi world")
     });
     it("app updates (update)", function () {
-        testApp.update(0, "hello world")
+        testApp.update(1, "hello world")
         expect(testApp.messages[0].content).to.equal('hello world')
     });
     it("app deletes (delete)", function () {
