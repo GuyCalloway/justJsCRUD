@@ -14,8 +14,10 @@ class MessageApp {
     }
 
     get(id) {
-        return this.messages[id]
+        let index = this.messages.findIndex(message => message.id === id)
+        return this.messages[index]
     }
+
 
     update(id, update) {
         this.messages.forEach(function (message) {
