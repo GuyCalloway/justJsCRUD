@@ -8,13 +8,20 @@ class MessageApp {
     }
 
     post(message) {
-        let item = {
-            id: newId(this.messages),
-            content: message,
-            date: new Date()
+        if (message) {
+            this.messages.push({
+                id: newId(this.messages),
+                content: message,
+                date: new Date()
+            })
+            this.writeToJson()
+            return this.messages
+        } else if (!message) {
+            return []
         }
-        this.messages.push(item)
-        this.writeToJson()
+    }
+
+    getAll() {
         return this.messages
     }
 
@@ -23,12 +30,15 @@ class MessageApp {
         return this.messages[index]
     }
 
-
     update(id, update) {
-        let index = this.messages.findIndex(message => message.id === id)
-        this.messages[index].content = update
-        this.writeToJson()
-        return this.messages
+        let index = findIndexOfID(this.messages, id)
+        if (index >= 0) {
+            this.messages[index].content = update
+            this.writeToJson()
+            return this.messages
+        } else {
+            return []
+        }
     }
 
     // update(id, update) {
@@ -41,9 +51,14 @@ class MessageApp {
     // }
 
     delete(id) {
-        this.messages = this.messages.filter(message => message.id != id)
-        this.writeToJson()
-        return this.messages
+        let index = findIndexOfID(this.messages, id)
+        if (index >= 0) {
+            this.messages.splice(index, 1)
+            this.writeToJson()
+            return this.messages
+        } else {
+            return "Message not found in database"
+        }
     }
 
     readFromJson() {
@@ -70,5 +85,9 @@ function newId(array) {
         return 1
     }
 };
+
+function findIndexOfID(array, id) {
+    return array.findIndex(message => message.id === id)
+}
 
 export default MessageApp
