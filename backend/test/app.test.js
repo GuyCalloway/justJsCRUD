@@ -1,7 +1,7 @@
 import {
     expect
 } from "chai";
-import MessageApp from "./app.js";
+import MessageApp from "./backend/app.js/index.js";
 
 describe("CRUD app", function () {
     let testApp = new MessageApp();
