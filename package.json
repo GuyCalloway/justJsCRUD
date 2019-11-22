@@ -4,16 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -r esm 'this is relative to where the package.json file is'",
-    "start": "mocha -r esm 'this is relative to where the package.json file is'"
-  },
-  "dependencies": {
-    "esm": "^3.2.25"
+    "test": "cd backend && npm test",
+    "start": "cd backend && npm start"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.2.2"
-  }
+  "license": "ISC"
 }
