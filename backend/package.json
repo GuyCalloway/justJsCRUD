@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha -r esm 'this is relative to where the package.json file is'",
-    "start": "mocha -r esm 'this is relative to where the package.json file is'"
+    "test": "nyc mocha -r esm test/* --exit",
+    "start": "mocha -r esm app.js"
   },
   "dependencies": {
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "nyc": "^14.1.1"
   },
   "author": "",
   "license": "ISC",
